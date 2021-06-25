@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block content %}
+<br>
+   <div class=" container-fluid w-75">
+      <a href="{{(url_for('create_note'))}}"><i class="fas fa-user-plus"> Nueva Nota</i></a>
+      <div class=" row mt-2">
+          <div class=" col-md-12 ">
+              <table class="table table-hover table-striped ">
+                      <thead class="text-center">
+                          <tr>
+                              <th class=" titulo">Acciones</th>
+                              <th class=" titulo ">Notas</th>
+                          </tr>
+                      <tbody>
+                        {% for note in notes %}
+                        <tr class="text-justify">
+                            <td>
+                                <form class="inline" action="{{url_for('delete_Note', id=note.users_id)}}" method="post">
+                                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button></form>
+                             </td>
+                           <td>{{note.body}}</td>
+                       </tr>
+                       {% endfor %}
+                      </tbody>
+                  </table>
+              </div>
+          </div>
+      </div>
+{% endblock %}
